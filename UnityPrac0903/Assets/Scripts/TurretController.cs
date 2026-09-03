@@ -11,12 +11,16 @@ public class TurretController : MonoBehaviour
 
     [SerializeField] private Transform _muzzleTransform;
     [SerializeField] private GameObject _bulletPrefab;
+    [SerializeField] private float _coolTime;
+    private float _timer;
 
 
     private void Update()
     {
         // 충돌처리 배우면 더 간단하게 가능하다
         // 포탑이랑 플레이어 거리 구하고
+        _timer += Time.deltaTime;
+        
         float distance = Vector3.Distance(transform.position, _playerTransform.position);
         
         // 감지 거리 안으로 들어오면 플레이어 응시&격발
@@ -35,10 +39,15 @@ public class TurretController : MonoBehaviour
     {
 
         // z쿨타임 텔타타임으로 
+        if (_coolTime >= _timer) return;
 
-        GameObject bullet = Instantiate(_bulletPrefab);
-        bullet.transform.position = _muzzleTransform.position;
-        bullet.transform.rotation = _muzzleTransform.rotation;
+        // GameObject bullet = Instantiate(_bulletPrefab);
+        // bullet.transform.position = _muzzleTransform.position;
+        // bullet.transform.rotation = _muzzleTransform.rotation;
+        Instantiate(_bulletPrefab, transform);
+
+        _timer = 0;
+    
     }
 
     private void RotateTurret()

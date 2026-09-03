@@ -52,6 +52,7 @@ MonoBehaviour:
   _detectionRange: 5
   _muzzleTransform: {fileID: 4016664233176871091}
   _bulletPrefab: {fileID: 2879268578291845217, guid: af6c8100193bbe443a9f07d8067af6a9, type: 3}
+  _coolTime: 3
 --- !u!1 &6566351908921959787
 GameObject:
   m_ObjectHideFlags: 0
